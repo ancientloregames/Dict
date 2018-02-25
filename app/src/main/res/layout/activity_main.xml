@@ -7,5 +7,5 @@
 	android:layout_height="match_parent"
 	tools:context="com.ancientlore.aldict.MainActivity"
 	>
-
+	<include layout="@layout/toolbar" />
 </FrameLayout>

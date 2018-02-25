@@ -8,5 +8,6 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(previousState: Bundle?) {
     super.onCreate(previousState)
     setContentView(R.layout.activity_main)
+    setSupportActionBar(findViewById(R.id.toolbar))
   }
 }
