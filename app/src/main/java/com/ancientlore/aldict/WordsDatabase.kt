@@ -20,7 +20,7 @@ abstract class WordsDatabase : RoomDatabase() {
       if (INSTANCE == null) {
         synchronized(WordsDatabase::class) {
           INSTANCE = Room.databaseBuilder(context.applicationContext,
-               WordsDatabase::class.java, "weather.db")
+               WordsDatabase::class.java, "words.db")
                .build()
         }
       }
