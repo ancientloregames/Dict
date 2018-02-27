@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
     setSupportActionBar(findViewById(R.id.toolbar))
 
-    wordsDb = WordsDatabase.getInstance(this)!!
+    wordsDb = WordsDatabase.getInstance(this)
 
     val listView : RecyclerView = findViewById(R.id.listView)
 

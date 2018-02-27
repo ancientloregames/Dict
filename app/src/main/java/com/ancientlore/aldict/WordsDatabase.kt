@@ -11,24 +11,12 @@ import android.content.Context
 
 @Database(entities = arrayOf(Word::class), version = 1)
 abstract class WordsDatabase : RoomDatabase() {
+
   abstract fun wordDao(): WordDao
 
-  companion object {
-    private var INSTANCE: WordsDatabase? = null
-
-    fun getInstance(context: Context): WordsDatabase? {
-      if (INSTANCE == null) {
-        synchronized(WordsDatabase::class) {
-          INSTANCE = Room.databaseBuilder(context.applicationContext,
-               WordsDatabase::class.java, "words.db")
-               .build()
-        }
-      }
-      return INSTANCE
-    }
-
-    fun destroyInstance() {
-      INSTANCE = null
-    }
-  }
+  companion object : SingletonHolder<WordsDatabase, Context>({
+    Room.databaseBuilder(it.applicationContext,
+        WordsDatabase::class.java, "words.db")
+        .build()
+  })
 }
