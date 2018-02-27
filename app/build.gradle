@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
@@ -33,7 +35,7 @@ dependencies {
     implementation "com.android.support:design:$SUPPORT_VERSION"
 
     implementation "android.arch.persistence.room:runtime:$ARCH_VERSION"
-    annotationProcessor "android.arch.persistence.room:compiler:$ARCH_VERSION"
+    kapt "android.arch.persistence.room:compiler:$ARCH_VERSION"
 
     implementation 'androidx.core:core-ktx:0.1'
 
