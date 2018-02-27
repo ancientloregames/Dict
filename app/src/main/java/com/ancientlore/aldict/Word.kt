@@ -6,9 +6,9 @@ import android.arch.persistence.room.*
  * com.ancientlore.aldict. Created by nimblemind on 2/25/2018.
  */
 
-@Entity(tableName = "words", indices = arrayOf(Index(value = "word", unique = true)))
+@Entity(tableName = "words", indices = arrayOf(Index(value = "name", unique = true)))
 data class Word(@PrimaryKey(autoGenerate = true) var id: Long?,
-                @field:ColumnInfo(name = "word") var word: String,
+                @field:ColumnInfo(name = "name") var word: String,
                 @field:ColumnInfo(name = "transcription") var transcription: String,
                 @field:ColumnInfo(name = "note") var note: String,
                 @field:ColumnInfo(name = "translations") var translations: List<String>?,

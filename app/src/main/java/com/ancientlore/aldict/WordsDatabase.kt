@@ -3,6 +3,7 @@ package com.ancientlore.aldict
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.TypeConverters
 import android.content.Context
 
 /**
@@ -10,6 +11,7 @@ import android.content.Context
  */
 
 @Database(entities = arrayOf(Word::class), version = 1)
+@TypeConverters(DataConverters::class)
 abstract class WordsDatabase : RoomDatabase() {
 
   abstract fun wordDao(): WordDao

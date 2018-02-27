@@ -37,6 +37,8 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:0.1'
 
+    implementation 'com.jsoniter:jsoniter:0.9.21'
+
     testImplementation 'junit:junit:4.12'
     testImplementation "android.arch.persistence.room:testing:$ARCH_VERSION"
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
