@@ -1,5 +1,6 @@
 package com.ancientlore.aldict
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -8,7 +9,6 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
-  private lateinit var wordsDb : WordsDatabase
   private val dbExec : ExecutorService = Executors.newSingleThreadExecutor()
 
   private lateinit var listAdapter : WordsListAdapter
@@ -18,15 +18,17 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
     setSupportActionBar(findViewById(R.id.toolbar))
 
-    wordsDb = WordsDatabase.getInstance(this)
-
     val listView : RecyclerView = findViewById(R.id.listView)
 
     listView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
     dbExec.submit {
-      listAdapter = WordsListAdapter(wordsDb.wordDao().getAll())
+      listAdapter = WordsListAdapter(applicationContext.db.wordDao().getAll())
       listView.adapter = listAdapter
     }
+  }
+
+  override fun getApplicationContext(): App {
+    return super.getApplicationContext() as App
   }
 }
