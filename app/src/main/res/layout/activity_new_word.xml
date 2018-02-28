@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:bind="http://schemas.android.com/tools"
+	>
+
+	<android.support.constraint.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+	>
+		<include
+			layout="@layout/toolbar"
+			android:id="@+id/include"
+			/>
+
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/wordWrapper"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@+id/include"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			>
+			<android.support.v7.widget.AppCompatEditText
+				android:id="@+id/word"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:inputType="textCapWords"
+				android:singleLine="true"
+				android:maxLines="1"
+				android:hint="@string/word"
+				/>
+		</android.support.design.widget.TextInputLayout>
+
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/translationWrapper"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@+id/wordWrapper"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			>
+			<android.support.v7.widget.AppCompatEditText
+				android:id="@+id/translation"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:inputType="textCapWords"
+				android:singleLine="true"
+				android:maxLines="1"
+				android:hint="@string/translation"
+				/>
+		</android.support.design.widget.TextInputLayout>
+
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/transcriptionWrapper"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@+id/translationWrapper"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			>
+			<android.support.v7.widget.AppCompatEditText
+				android:id="@+id/transcription"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:inputType="textCapWords"
+				android:singleLine="true"
+				android:maxLines="1"
+				android:hint="@string/transcription"
+				/>
+		</android.support.design.widget.TextInputLayout>
+	</android.support.constraint.ConstraintLayout>
+</layout>

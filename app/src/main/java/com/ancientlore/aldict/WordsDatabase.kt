@@ -17,7 +17,7 @@ abstract class WordsDatabase : RoomDatabase() {
   abstract fun wordDao(): WordDao
 
   companion object : SingletonHolder<WordsDatabase, Context>({
-    Room.databaseBuilder(it.applicationContext,
+    Room.databaseBuilder(it,
         WordsDatabase::class.java, "words.db")
         .build()
   })
