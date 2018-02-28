@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,11 +7,17 @@
 	android:layout_height="match_parent"
 	tools:context="com.ancientlore.aldict.MainActivity"
 	>
-	<include layout="@layout/toolbar" />
+	<include
+		layout="@layout/toolbar"
+		android:id="@+id/include"
+		/>
 	<android.support.v7.widget.RecyclerView
 		android:id="@+id/listView"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_below="@+id/appbar"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/include"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
 		/>
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

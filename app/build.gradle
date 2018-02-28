@@ -34,6 +34,8 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$SUPPORT_VERSION"
     implementation "com.android.support:design:$SUPPORT_VERSION"
 
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
     implementation "android.arch.persistence.room:runtime:$ARCH_VERSION"
     kapt "android.arch.persistence.room:compiler:$ARCH_VERSION"
 
