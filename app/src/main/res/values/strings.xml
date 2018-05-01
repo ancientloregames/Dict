@@ -8,4 +8,6 @@
 	<string name="transcription">Transcription</string>
 	<string name="synonyms">Synonyms</string>
 	<string name="topic">Topic</string>
+
+	<string name="submit">Submit</string>
 </resources>

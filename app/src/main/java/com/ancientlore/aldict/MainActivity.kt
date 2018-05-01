@@ -1,5 +1,6 @@
 package com.ancientlore.aldict
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -29,6 +30,21 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 		dbExec.submit {
 			listAdapter = WordsListAdapter(applicationContext.db.wordDao().getAll())
 			listView.adapter = listAdapter
+		}
+	}
+
+	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+		super.onActivityResult(requestCode, resultCode, data)
+
+		if (resultCode != Activity.RESULT_OK) return
+
+		when(requestCode) {
+			INTENT_NEW_WORD -> {
+				data?.let {
+					val word = it.getParcelableExtra<Word>(NewWordActivity.EXTRA_WORD)
+					word?.let { dbExec.submit { applicationContext.db.wordDao().insert(it) } }
+				}
+			}
 		}
 	}
 
