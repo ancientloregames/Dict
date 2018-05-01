@@ -1,47 +1,47 @@
 package com.ancientlore.aldict
 
 import android.content.Intent
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.ancientlore.aldict.databinding.ActivityMainBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class MainActivity : AppCompatActivity() {
-  companion object {
-    val INTENT_NEW_WORD = 101
-  }
-  private val dbExec : ExecutorService = Executors.newSingleThreadExecutor()
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-  private lateinit var listAdapter : WordsListAdapter
+	companion object {
+		const val INTENT_NEW_WORD = 101
+	}
 
-  override fun onCreate(previousState: Bundle?) {
-    super.onCreate(previousState)
-    setContentView(R.layout.activity_main)
-    setSupportActionBar(findViewById(R.id.toolbar))
+	private val dbExec: ExecutorService = Executors.newSingleThreadExecutor()
 
-    DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_main)
+	private lateinit var listAdapter: WordsListAdapter
 
-    val listView : RecyclerView = findViewById(R.id.listView)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
 
-    listView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+		val listView: RecyclerView = findViewById(R.id.listView)
 
-    dbExec.submit {
-      listAdapter = WordsListAdapter(applicationContext.db.wordDao().getAll())
-      listView.adapter = listAdapter
-    }
-  }
+		listView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-  override fun getApplicationContext(): App {
-    return super.getApplicationContext() as App
-  }
+		dbExec.submit {
+			listAdapter = WordsListAdapter(applicationContext.db.wordDao().getAll())
+			listView.adapter = listAdapter
+		}
+	}
 
-  fun addNewWord(view: View) {
-    val intent = Intent(this, NewWordActivity::class.java)
-    startActivityForResult(intent, INTENT_NEW_WORD)
-  }
+	override fun getLayoutId() = R.layout.activity_main
+
+	override fun getBindingVariable() = BR.viewModel
+
+	override fun createViewModel() = MainViewModel()
+
+	override fun getApplicationContext() = super.getApplicationContext() as App
+
+	fun addNewWord(view: View) {
+		val intent = Intent(this, NewWordActivity::class.java)
+		startActivityForResult(intent, INTENT_NEW_WORD)
+	}
 }

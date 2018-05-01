@@ -12,6 +12,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+		setSupportActionBar(findViewById(R.id.toolbar))
 
 		viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
 		viewModel = createViewModel()
