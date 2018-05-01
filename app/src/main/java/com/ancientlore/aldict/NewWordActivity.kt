@@ -1,12 +1,12 @@
 package com.ancientlore.aldict
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import com.ancientlore.aldict.databinding.ActivityNewWordBinding
 
-class NewWordActivity : AppCompatActivity() {
+class NewWordActivity : BaseActivity<ActivityNewWordBinding, WordViewModel>(){
 
-  override fun onCreate(previousState: Bundle?) {
-    super.onCreate(previousState)
-    setContentView(R.layout.activity_new_word)
-  }
+	override fun getBindingVariable() = BR.viewModel
+
+	override fun getLayoutId() = R.layout.activity_new_word
+
+	override fun createViewModel() = WordViewModel(Word())
 }

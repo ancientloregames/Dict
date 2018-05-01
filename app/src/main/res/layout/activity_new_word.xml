@@ -3,6 +3,9 @@
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:bind="http://schemas.android.com/tools"
 	>
+	<data>
+		<variable name="viewModel" type="com.ancientlore.aldict.WordViewModel"/>
+	</data>
 
 	<android.support.constraint.ConstraintLayout
 		android:layout_width="match_parent"
@@ -29,6 +32,7 @@
 				android:singleLine="true"
 				android:maxLines="1"
 				android:hint="@string/word"
+				android:text="@{viewModel.getWord()}"
 				/>
 		</android.support.design.widget.TextInputLayout>
 
@@ -48,6 +52,7 @@
 				android:singleLine="true"
 				android:maxLines="1"
 				android:hint="@string/translation"
+				android:text="@{viewModel.getTranslations()}"
 				/>
 		</android.support.design.widget.TextInputLayout>
 
@@ -67,6 +72,7 @@
 				android:singleLine="true"
 				android:maxLines="1"
 				android:hint="@string/transcription"
+				android:text="@{viewModel.getTranscription()}"
 				/>
 		</android.support.design.widget.TextInputLayout>
 	</android.support.constraint.ConstraintLayout>
