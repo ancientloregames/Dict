@@ -28,7 +28,7 @@ class WordsListAdapter(private val items : List<Word>) : RecyclerView.Adapter<Wo
     private val subtitleView: TextView = itemView.findViewById(R.id.subtitle)
 
     fun bind(data: Word) {
-      titleView.text = data.word
+      titleView.text = data.name
       subtitleView.text = data.translations?.get(0) ?: ""
     }
   }
