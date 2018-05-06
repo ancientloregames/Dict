@@ -10,7 +10,7 @@ import android.content.Context
  * com.ancientlore.aldict. Created by nimblemind on 2/25/2018.
  */
 
-@Database(entities = arrayOf(Word::class), version = 1)
+@Database(entities = [(Word::class)], version = 1)
 @TypeConverters(DataConverters::class)
 abstract class WordsDatabase : RoomDatabase() {
 

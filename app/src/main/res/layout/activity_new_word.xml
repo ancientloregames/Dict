@@ -4,7 +4,7 @@
 		xmlns:bind="http://schemas.android.com/tools"
 	>
 	<data>
-		<variable name="word" type="com.ancientlore.aldict.WordViewModel"/>
+		<variable name="wordModel" type="com.ancientlore.aldict.WordViewModel"/>
 	</data>
 
 	<android.support.constraint.ConstraintLayout
@@ -32,7 +32,7 @@
 				android:singleLine="true"
 				android:maxLines="1"
 				android:hint="@string/word"
-				android:text="@{word.getName()}"
+				android:text="@={wordModel.name}"
 				/>
 		</android.support.design.widget.TextInputLayout>
 
@@ -52,7 +52,7 @@
 				android:singleLine="true"
 				android:maxLines="1"
 				android:hint="@string/translation"
-				android:text="@{word.getTranslations()}"
+				android:text="@={wordModel.translations}"
 				/>
 		</android.support.design.widget.TextInputLayout>
 
@@ -72,7 +72,7 @@
 				android:singleLine="true"
 				android:maxLines="1"
 				android:hint="@string/transcription"
-				android:text="@{word.getTranscription()}"
+				android:text="@={wordModel.transcription}"
 				/>
 		</android.support.design.widget.TextInputLayout>
 		<Button

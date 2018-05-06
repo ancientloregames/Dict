@@ -15,6 +15,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
 		setSupportActionBar(findViewById(R.id.toolbar))
 
 		viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
+		viewDataBinding.setLifecycleOwner(this)
 		viewModel = createViewModel()
 		viewDataBinding.setVariable(getBindingVariable(), viewModel)
 		viewDataBinding.executePendingBindings()

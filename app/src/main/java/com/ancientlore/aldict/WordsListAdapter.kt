@@ -29,7 +29,7 @@ class WordsListAdapter(private val items : List<Word>) : RecyclerView.Adapter<Wo
 
     fun bind(data: Word) {
       titleView.text = data.name
-      subtitleView.text = data.translations?.get(0) ?: ""
+      subtitleView.text = data.translations
     }
   }
 }

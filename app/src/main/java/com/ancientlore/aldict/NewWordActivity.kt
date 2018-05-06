@@ -11,11 +11,11 @@ class NewWordActivity : BaseActivity<ActivityNewWordBinding, WordViewModel>(){
 		const val EXTRA_WORD = "word"
 	}
 
-	override fun getBindingVariable() = BR.word
+	override fun getBindingVariable() = BR.wordModel
 
 	override fun getLayoutId() = R.layout.activity_new_word
 
-	override fun createViewModel() = WordViewModel(Word())
+	override fun createViewModel() = WordViewModel()
 
 	fun submitNewWord(view: View) {
 		val activityResult = Intent()

@@ -1,12 +1,19 @@
 package com.ancientlore.aldict
 
-class WordViewModel(private val word: Word) : BaseViewModel() {
+import android.databinding.ObservableField
 
-	fun getName() = word.name
+class WordViewModel : BaseViewModel() {
 
-	fun getTranslations() = word.translations?.joinToString() ?: ""
+	val name = ObservableField<String>("")
 
-	fun getTranscription() = word.transcription
+	val translations = ObservableField<String>("")
 
-	internal fun getWord() = word
+	val transcription = ObservableField<String>("")
+
+	internal fun getWord(): Word {
+		val name = this.name.get()!!
+		val translations = this.translations.get()!!
+		val transcription = this.transcription.get()!!
+		return Word(name = name, translations = translations, transcription = transcription)
+	}
 }
