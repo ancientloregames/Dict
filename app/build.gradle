@@ -41,15 +41,24 @@ dependencies {
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
-    implementation "android.arch.persistence.room:runtime:$ARCH_VERSION"
-    kapt "android.arch.persistence.room:compiler:$ARCH_VERSION"
+    implementation "android.arch.lifecycle:extensions:$LIFECYCLE_VERSION"
+    implementation "android.arch.lifecycle:viewmodel:$LIFECYCLE_VERSION"
+    implementation "android.arch.lifecycle:livedata:$LIFECYCLE_VERSION"
+    implementation "android.arch.lifecycle:reactivestreams:$LIFECYCLE_VERSION"
+    kapt "android.arch.lifecycle:compiler:$LIFECYCLE_VERSION"
+
+    implementation "android.arch.persistence.room:runtime:$ROOM_VERSION"
+    implementation "android.arch.persistence.room:rxjava2:$ROOM_VERSION"
+    kapt "android.arch.persistence.room:compiler:$ROOM_VERSION"
 
     implementation 'androidx.core:core-ktx:0.3'
 
     implementation 'com.jsoniter:jsoniter:0.9.22'
 
+    testImplementation "android.arch.persistence.room:testing:$ROOM_VERSION"
+    testImplementation "android.arch.core:core-testing:$LIFECYCLE_VERSION"
+
     testImplementation 'junit:junit:4.12'
-    testImplementation "android.arch.persistence.room:testing:$ARCH_VERSION"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
