@@ -16,7 +16,7 @@ class WordsListAdapter(private val items : List<Word>) : RecyclerView.Adapter<Wo
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-    return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.base_list_item, parent))
+    return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.base_list_item, parent, false))
   }
 
   override fun onBindViewHolder(holder: ViewHolder, index: Int) {
