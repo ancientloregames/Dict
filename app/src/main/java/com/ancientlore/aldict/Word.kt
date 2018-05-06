@@ -12,24 +12,24 @@ import android.os.Parcelable
  */
 
 @Entity(tableName = "words", indices = [(Index(value = "name", unique = true))])
-data class Word(@PrimaryKey(autoGenerate = true) var id: Long? = 0,
+data class Word(@PrimaryKey(autoGenerate = true) var id: Long = 0,
                 @field:ColumnInfo(name = "name") var name: String = "",
                 @field:ColumnInfo(name = "transcription") var transcription: String = "",
                 @field:ColumnInfo(name = "note") var note: String = "",
-                @field:ColumnInfo(name = "translations") var translations: List<String>? = null,
-                @field:ColumnInfo(name = "synonyms") var synonyms: List<String>? = null,
-                @field:ColumnInfo(name = "topics") var topics: List<String>? = null,
+                @field:ColumnInfo(name = "translations") var translations: String = "",
+                @field:ColumnInfo(name = "synonyms") var synonyms: String = "",
+                @field:ColumnInfo(name = "topics") var topics: String = "",
                 @field:ColumnInfo(name = "imagePath") var imagePath: String = "",
                 @field:ColumnInfo(name = "audioPath") var audioPath: String = "") : Parcelable {
 
 	private constructor(parcel: Parcel) : this(
-			id = parcel.readValue(Long::class.java.classLoader) as? Long,
+			id = parcel.readValue(Long::class.java.classLoader) as Long,
 			name = parcel.readString(),
 			transcription = parcel.readString(),
 			note = parcel.readString(),
-			translations = parcel.createStringArrayList(),
-			synonyms = parcel.createStringArrayList(),
-			topics = parcel.createStringArrayList(),
+			translations = parcel.readString(),
+			synonyms = parcel.readString(),
+			topics = parcel.readString(),
 			imagePath = parcel.readString(),
 			audioPath = parcel.readString())
 
@@ -38,9 +38,9 @@ data class Word(@PrimaryKey(autoGenerate = true) var id: Long? = 0,
 		parcel.writeString(name)
 		parcel.writeString(transcription)
 		parcel.writeString(note)
-		parcel.writeStringList(translations)
-		parcel.writeStringList(synonyms)
-		parcel.writeStringList(topics)
+		parcel.writeString(translations)
+		parcel.writeString(synonyms)
+		parcel.writeString(topics)
 		parcel.writeString(imagePath)
 		parcel.writeString(audioPath)
 	}
