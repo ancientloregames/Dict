@@ -23,6 +23,10 @@
 			app:layout_constraintTop_toBottomOf="@+id/include"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
+			android:layout_marginLeft="8dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginRight="8dp"
 			>
 			<android.support.v7.widget.AppCompatEditText
 				android:id="@+id/word"
@@ -43,6 +47,10 @@
 			app:layout_constraintTop_toBottomOf="@+id/wordWrapper"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
+			android:layout_marginEnd="8dp"
+			android:layout_marginRight="8dp"
+			android:layout_marginLeft="8dp"
+			android:layout_marginStart="8dp"
 			>
 			<android.support.v7.widget.AppCompatEditText
 				android:id="@+id/translation"
@@ -63,6 +71,10 @@
 			app:layout_constraintTop_toBottomOf="@+id/translationWrapper"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
+			android:layout_marginLeft="8dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginRight="8dp"
 			>
 			<android.support.v7.widget.AppCompatEditText
 				android:id="@+id/transcription"
@@ -75,7 +87,46 @@
 				android:text="@={wordModel.transcription}"
 				/>
 		</android.support.design.widget.TextInputLayout>
-		<Button
+
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/synonymsWrapper"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@+id/transcriptionWrapper"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			android:layout_marginLeft="8dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginRight="8dp"
+			>
+			<android.support.design.widget.TextInputEditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/synonyms"
+				/>
+		</android.support.design.widget.TextInputLayout>
+
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/noteWrapper"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@+id/synonymsWrapper"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			android:layout_marginLeft="8dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginRight="8dp"
+			>
+			<android.support.design.widget.TextInputEditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/note"
+				/>
+		</android.support.design.widget.TextInputLayout>
+
+		<android.support.v7.widget.AppCompatButton
 			android:text="@string/submit"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
