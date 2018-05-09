@@ -42,6 +42,7 @@
 				android:maxLines="1"
 				android:hint="@string/word"
 				android:text="@={wordModel.name}"
+				android:addTextChangedListener="@{wordModel.textWatcher}"
 				/>
 		</android.support.design.widget.TextInputLayout>
 

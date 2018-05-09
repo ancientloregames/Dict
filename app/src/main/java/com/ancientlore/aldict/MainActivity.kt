@@ -28,7 +28,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 		listView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
 		dbExec.submit {
-			listAdapter = WordsListAdapter(applicationContext.db.wordDao().getAll())
+			listAdapter = WordsListAdapter(App.db.wordDao().getAll())
 			listView.adapter = listAdapter
 		}
 	}
@@ -42,7 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 			INTENT_NEW_WORD -> {
 				data?.let {
 					val word = it.getParcelableExtra<Word>(NewWordActivity.EXTRA_WORD)
-					word?.let { dbExec.submit { applicationContext.db.wordDao().insert(it) } }
+					word?.let { dbExec.submit { App.db.wordDao().insert(it) } }
 				}
 			}
 		}

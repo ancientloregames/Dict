@@ -1,8 +1,9 @@
 package com.ancientlore.aldict
 
-import android.databinding.BindingAdapter
 import android.databinding.ObservableField
-import android.view.View
+import android.text.Editable
+import java.util.concurrent.Executors
+import java.util.concurrent.Future
 
 class WordViewModel : BaseViewModel() {
 
@@ -18,6 +19,33 @@ class WordViewModel : BaseViewModel() {
 
 	val note = ObservableField<String>("")
 
+	val textWatcher = object : SimpleTextWatcher() {
+
+		private val exec = Executors.newSingleThreadExecutor()
+		private var execService: Future<*>? = null
+
+		private val setTranslation = object : Runnable1<String> {
+			override fun run(translation: String) {
+				translations.set(translation)
+			}
+		}
+
+		private val printError = object : Runnable1<Throwable> {
+			override fun run(throwable: Throwable) {
+				throwable.printStackTrace()
+			}
+		}
+
+		override fun afterTextChanged(s: Editable) {
+			if (s.length > 2) {
+				execService?.cancel(true)
+				execService = exec.submit {
+					Utils.getTranslation(s.toString(), setTranslation, printError)
+				}
+			}
+		}
+	}
+
 	internal fun getWord(): Word {
 		val name = this.name.get()!!
 		val translations = this.translations.get()!!
@@ -26,8 +54,6 @@ class WordViewModel : BaseViewModel() {
 		val note = this.note.get()!!
 		return Word(name = name, translations = translations, transcription = transcription, note = note, synonyms = synonyms)
 	}
-
-	fun synonymsListVisibility() = if (synonyms.get()!!.isNotEmpty()) View.VISIBLE else View.GONE
 
 	fun onAddSynonymClicked() {
 		synonym.get()?.let {

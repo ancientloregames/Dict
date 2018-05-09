@@ -1,14 +1,20 @@
 package com.ancientlore.aldict
 
-import android.app.Application
+import android.support.multidex.MultiDexApplication
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.Volley
 
-class App : Application() {
+class App : MultiDexApplication() {
 
-  lateinit var db : WordsDatabase
+	companion object {
+		lateinit var requestQueue : RequestQueue
+		lateinit var db : WordsDatabase
+	}
 
-  override fun onCreate() {
-    super.onCreate()
+	override fun onCreate() {
+		super.onCreate()
 
-    db = WordsDatabase.getInstance(this)
-  }
+		db = WordsDatabase.getInstance(this)
+		requestQueue = Volley.newRequestQueue(this)
+	}
 }
