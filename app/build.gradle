@@ -33,13 +33,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
 
-    kapt 'com.android.databinding:compiler:3.1.2'
+    kapt "com.android.databinding:compiler:$DATABINDING_VERSION"
 
     implementation "com.android.support:appcompat-v7:$SUPPORT_VERSION"
     implementation "com.android.support:recyclerview-v7:$SUPPORT_VERSION"
     implementation "com.android.support:design:$SUPPORT_VERSION"
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation "com.android.support.constraint:constraint-layout:$CONSTRAINT_VERSION"
 
     implementation "android.arch.lifecycle:extensions:$LIFECYCLE_VERSION"
     implementation "android.arch.lifecycle:viewmodel:$LIFECYCLE_VERSION"
@@ -51,14 +51,16 @@ dependencies {
     implementation "android.arch.persistence.room:rxjava2:$ROOM_VERSION"
     kapt "android.arch.persistence.room:compiler:$ROOM_VERSION"
 
-    implementation 'androidx.core:core-ktx:0.3'
+    implementation "com.google.cloud:google-cloud-translate:$TRANSLATE_VERSION"
 
-    implementation 'com.jsoniter:jsoniter:0.9.22'
+    implementation "androidx.core:core-ktx:$KTX_VERSION"
+
+    implementation "com.jsoniter:jsoniter:$JSONITER_VERSION"
 
     testImplementation "android.arch.persistence.room:testing:$ROOM_VERSION"
     testImplementation "android.arch.core:core-testing:$LIFECYCLE_VERSION"
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation "junit:junit:$JUNIT_VERSION"
+    androidTestImplementation "com.android.support.test:runner:$RUNNER_VERSION"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
 }

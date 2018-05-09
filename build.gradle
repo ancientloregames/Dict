@@ -2,9 +2,17 @@
 
 buildscript {
     ext.KOTLIN_VERSION = '1.2.41'
+    ext.DATABINDING_VERSION = '3.1.2'
+    ext.CONSTRAINT_VERSION = '1.1.0'
     ext.SUPPORT_VERSION = '27.1.1'
     ext.LIFECYCLE_VERSION = '1.1.1'
-    ext.ROOM_VERSION = '1.0.0'
+    ext.ROOM_VERSION = '1.1.0'
+    ext.TRANSLATE_VERSION = '1.28.0'
+    ext.JSONITER_VERSION = '0.9.22'
+    ext.KTX_VERSION = '0.3'
+    ext.JUNIT_VERSION = '4.12'
+    ext.RUNNER_VERSION = '1.0.2'
+    ext.ESPRESSO_VERSION = '3.0.2'
     repositories {
         google()
         jcenter()
