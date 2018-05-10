@@ -1,20 +1,19 @@
 package com.ancientlore.aldict
 
 import android.support.multidex.MultiDexApplication
-import com.android.volley.RequestQueue
-import com.android.volley.toolbox.Volley
+import okhttp3.OkHttpClient
 
 class App : MultiDexApplication() {
 
 	companion object {
-		lateinit var requestQueue : RequestQueue
 		lateinit var db : WordsDatabase
+		lateinit var okHttpClient: OkHttpClient
 	}
 
 	override fun onCreate() {
 		super.onCreate()
 
 		db = WordsDatabase.getInstance(this)
-		requestQueue = Volley.newRequestQueue(this)
+		okHttpClient = OkHttpClient()
 	}
 }

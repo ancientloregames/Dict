@@ -7,7 +7,6 @@ buildscript {
     ext.SUPPORT_VERSION = '27.1.1'
     ext.LIFECYCLE_VERSION = '1.1.1'
     ext.ROOM_VERSION = '1.1.0'
-    ext.TRANSLATE_VERSION = '1.28.0'
     ext.JSONITER_VERSION = '0.9.22'
     ext.KTX_VERSION = '0.3'
     ext.JUNIT_VERSION = '4.12'
