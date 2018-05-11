@@ -5,6 +5,7 @@ import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
 import java.io.IOException
+import java.util.regex.Pattern
 
 object Utils {
 
@@ -14,10 +15,14 @@ object Utils {
 
 		App.okHttpClient.newCall(request).enqueue(object : Callback {
 			@Throws(IOException::class)
-			override fun onResponse(call: Call, response: Response) {
-				if (response.isSuccessful)
-					response.body()?.let { onSuccess.run(it.string()) } ?: onFailure?.run(IOException("Empty body"))
-				else onFailure?.run(IOException("Failed to download: $url"))
+			override fun onResponse(call: Call, response: Response) { // Response example: [[["слово","word",null,null,1]],null,"en"]
+				if (response.isSuccessful) {
+					response.body()?.let {
+						val translation = parseGoogleTranslateResponse(it.string())
+						onSuccess.run(translation)
+					} ?: onFailure?.run(IOException("Response has empty body. $response"))
+				}
+				else onFailure?.run(IOException("Recieved unsuccessful response: $response"))
 			}
 			override fun onFailure(call: Call, e: IOException) {
 				onFailure?.run(e)
@@ -33,5 +38,11 @@ object Utils {
 		url.append("&dt=t&q=")
 		url.append(Uri.encode(text))
 		return url.toString()
+	}
+
+	private fun parseGoogleTranslateResponse(rawText: String): String {
+		val pattern = Pattern.compile("\"(.*?)\"")
+		val matcher = pattern.matcher(rawText)
+		return if (matcher.find()) matcher.group(1) else ""
 	}
 }
