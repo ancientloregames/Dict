@@ -1,5 +1,6 @@
 package com.ancientlore.aldict
 
+import android.support.annotation.UiThread
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,13 @@ import android.widget.TextView
 /**
  * com.ancientlore.aldict. Created by nimblemind on 2/25/2018.
  */
-class WordsListAdapter(private val items : List<Word>) : RecyclerView.Adapter<WordsListAdapter.ViewHolder>() {
+class WordsListAdapter(private val items : MutableList<Word>) : RecyclerView.Adapter<WordsListAdapter.ViewHolder>() {
+
+	@UiThread
+	fun addItem(newWord: Word) {
+		items.add(newWord)
+		notifyItemInserted(itemCount - 1)
+	}
 
   override fun getItemCount(): Int {
     return items.count()
