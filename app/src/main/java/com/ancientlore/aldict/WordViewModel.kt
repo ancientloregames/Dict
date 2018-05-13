@@ -2,8 +2,7 @@ package com.ancientlore.aldict
 
 import android.databinding.ObservableField
 import android.text.Editable
-import java.util.concurrent.Executors
-import java.util.concurrent.Future
+import java.util.concurrent.*
 
 class WordViewModel : BaseViewModel() {
 
@@ -19,10 +18,10 @@ class WordViewModel : BaseViewModel() {
 
 	val note = ObservableField<String>("")
 
-	val textWatcher = object : SimpleTextWatcher() {
+	val typeWordWatcher = object : SimpleTextWatcher() {
 
-		private val exec = Executors.newSingleThreadExecutor()
-		private var execService: Future<*>? = null
+		private var execService = Executors.newSingleThreadScheduledExecutor { r -> Thread(r, "translate-word") }
+		private var execTask: ScheduledFuture<*>? = null
 
 		private val setTranslation = object : Runnable1<String> {
 			override fun run(translation: String) {
@@ -37,11 +36,11 @@ class WordViewModel : BaseViewModel() {
 		}
 
 		override fun afterTextChanged(s: Editable) {
+			execTask?.cancel(true)
 			if (s.length > 2) {
-				execService?.cancel(true)
-				execService = exec.submit {
+				execTask = execService.schedule( {
 					Utils.getTranslation(s.toString(), setTranslation, printError)
-				}
+				}, 200, TimeUnit.MILLISECONDS)
 			}
 		}
 	}
